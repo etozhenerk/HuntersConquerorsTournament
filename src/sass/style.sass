@@ -1,0 +1,208 @@
+body
+  margin: 0
+  font-family: 'Roboto', sans-serif
+  background: grey url(../img/bg.jpg) center / cover no-repeat
+
+p,h1,h2,h3,h4,h5,h6
+  margin: 0
+  padding: 0 
+*
+  box-sizing: border-box
+
+.header
+  margin-top: 20px
+  margin-bottom: 50px
+  &-content
+    padding: 20px 10px
+    background-color: rgba(#ffffff, 0.8)
+    border-radius: 10px
+.catalog
+  position: absolute
+  display: none
+  left: 50%
+  transform: translateX(-50%)
+  z-index: 120
+  background-color: rgba(#ffffff, 0.8)
+  border: 1px solid #000000
+  border-radius: 5px
+  ul
+    list-style: none
+    margin: 0
+    padding: 10px
+    text-align: center
+    li
+      padding: 2px 5px
+  &-button
+    cursor: pointer
+    position: relative
+    button
+      position: relative
+      margin: 0 auto
+      padding: 10px 25px
+      padding-left: 55px
+      border: none
+      background-color: #000000
+      color: #ffffff
+      cursor: pointer
+      border-radius: 5px
+      font-size: 16px
+      font-weight: 700
+      display: flex
+      align-items: center
+      justify-content: center
+    &_burger
+      display: inline-block
+      position: absolute
+      top: 50%
+      left: 25px
+      width: 23px
+      height: 3px
+      transform: translateY(-50%)
+      background-color: #ffffff
+      &::before
+        content: ""
+        position: absolute
+        width: 23px
+        height: 3px
+        top: -6px
+        left: 0
+        background-color: #ffffff
+      &::after
+        content: ""
+        position: absolute
+        width: 23px
+        height: 3px
+        top: 6px
+        left: 0
+        background-color: #ffffff
+.form
+  margin-left: 15px
+  width: 80%
+  position: relative
+  &__input
+    font-size: 18px
+    padding: 8px
+    border: none
+    border-bottom: 1px solid black
+    background-color: transparent
+    width: 100%
+    &::focus
+      border: none
+      border-bottom: 1px solid black
+  &__btn
+    position: absolute
+    right: 0
+    top: 0
+    padding: 10px
+    border: none
+    background-color: transparent
+    cursor: pointer
+    &::focus
+    border: none
+.main
+  &-content
+    padding: 20px 10px
+    background-color: rgba(#ffffff, 0.8)
+    border-radius: 10px
+.card
+  border-bottom: 1px solid #000
+  &-body
+    padding: 10px 0
+  &-platinum,&-diamond,&-item
+    text-align: center
+.title
+  margin-bottom: 20px
+  &-platinum,&-diamond,&-item
+    text-align: center
+    font-weight: 700
+    font-size: 18px
+  &-class
+    font-weight: 700
+    font-size: 18px
+  &-title
+    font-size: 18px
+.filter
+  display: flex
+  flex-direction: column
+  &-title
+    font-weight: 700
+    font-size: 24px
+    margin-bottom: 20px
+  &-check
+    display: flex
+    flex-direction: column
+    margin-bottom: 15px
+    padding-left: 60px
+    &_label 
+      display: block
+      min-height: 16px
+      position: relative
+      padding-left: 21px
+      color: #000000
+      font-size: 14px
+      cursor: pointer
+      user-select: none
+      margin-bottom: 5px
+      &-text
+        display: inline-block
+        vertical-align: top
+        line-height: 100%
+        margin-top: 1px
+      .active
+        font-weight: 700
+    &_checkbox
+      opacity: 0
+      position: absolute
+      cursor: pointer
+    &_checkmark
+      width: 15px
+      height: 15px
+      position: absolute
+      top: 0
+      left: 0
+      box-sizing: border-box
+      background: #fff
+      border: 1px solid #000000
+      border-radius: 2px
+      &.checked::after
+        display: block
+      &:after
+        display: none
+        width: 15px
+        height: 15px
+        position: absolute
+        top: -4px
+        left: 2px
+        content: ""
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 15 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.3 15L15 1.2 13.7 0 5.1 12.3 1.1 8 0 9.4 5.3 15z' fill='%23005bff'/%3E%3C/svg%3E")
+
+@media ( max-width: 992px )
+  .form
+    width: 90%
+  .filter
+    &-check
+      padding-left: 10px
+@media ( max-width: 576px )
+  .hidden
+    &-mobile
+      display: none
+  .catalog
+    &-button
+      button
+        padding: 20px 20px
+      &_burger
+        left: 50%
+        transform: translateX(-50%)
+  .filter
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+    &-title
+      width: 100%
+      text-align: center
+      
+    
+        
+			
+		
+	
