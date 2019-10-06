@@ -75,6 +75,12 @@ function toggleCheckbox() {
 
   const oneItem = document.querySelector("#one-item");
   const twoItem = document.querySelector("#two-item");
+  onePlatinum.checked = false;
+  twoPlatinum.checked = false;
+  oneDiamond.checked = false;
+  twoDiamond.checked = false;
+  oneItem.checked = false;
+  twoItem.checked = false;
 
   onePlatinum.addEventListener("change", () => {
     if (onePlatinum.checked === true) {

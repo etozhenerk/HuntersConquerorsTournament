@@ -220,6 +220,7 @@ p, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 .filter-check_checkbox {
+  opacity: 0;
   position: absolute;
   cursor: pointer;
 }
