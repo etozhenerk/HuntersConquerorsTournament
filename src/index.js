@@ -223,6 +223,7 @@ function filter() {
 
 function actionPage() {
   const cards = document.querySelectorAll(".hunters .card"),
+  form = document.querySelector(".form"),
   search = document.querySelector(".form__input"),
   searchBtn = document.querySelector(".form__btn");
 
@@ -242,7 +243,8 @@ function actionPage() {
   oneItem.addEventListener("change",filter);
   twoItem.addEventListener("change",filter);
 
-  searchBtn.addEventListener("click", () => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     const searchText = new RegExp(search.value.trim(), "i");
     cards.forEach(elem => {
       const title = elem.querySelector(".card-title");
