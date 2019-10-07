@@ -13,79 +13,46 @@ p,h1,h2,h3,h4,h5,h6
 *
   box-sizing: border-box
 .active
-  color: red
+  transform: scale(1.2)
+  color: #CC5333
 .header
-  margin-top: 20px
-  margin-bottom: 50px
+  padding-top: 20px
+  padding-bottom: 50px
   &-content
     padding: 20px 10px
     background-color: rgba(#ffffff, 0.8)
     border-radius: 10px
 .catalog
-  position: absolute
-  display: none
-  left: 50%
-  transform: translateX(-50%)
-  z-index: 120
-  background-color: rgba(#ffffff, 0.8)
-  border: 1px solid #000000
-  border-radius: 5px
-  ul
+  &-list
+    
     list-style: none
     margin: 0
-    padding: 10px 0
+    padding: 5px 0
     text-align: center
     li
-      padding: 2px 12px
-      cursor: pointer
-      &:hover
-        background-color: rgba(#000000, 0.2)
-  &-button
-    position: relative
-    button
-      position: relative
-      margin: 0 auto
-      padding: 10px 25px
-      padding-left: 55px
-      border: none
-      background-color: #000000
-      color: #ffffff
-      cursor: pointer
-      border-radius: 5px
-      font-size: 16px
-      font-weight: 700
       display: flex
+      flex-direction: column
       align-items: center
-      justify-content: center
-    &_burger
-      display: inline-block
-      position: absolute
-      top: 50%
-      left: 25px
-      width: 23px
-      height: 3px
-      transform: translateY(-50%)
-      background-color: #ffffff
-      &::before
-        content: ""
-        position: absolute
-        width: 23px
-        height: 3px
-        top: -6px
-        left: 0
-        background-color: #ffffff
-      &::after
-        content: ""
-        position: absolute
-        width: 23px
-        height: 3px
-        top: 6px
-        left: 0
-        background-color: #ffffff
+      cursor: pointer
+      text-align: center
+      font-size: 14px
+      transition: all 0.2s
+      margin-bottom: 5px
+      img
+        display: block
+        height: 32px
+        width: 32px
+        margin-bottom: 5px
+        transition: all 0.2s
+      &:hover
+        img
+          transform: scale(1.2)
 .form
-  margin-left: 15px
-  width: 80%
+  margin-left: auto
+  margin-right: auto
+  width: 90%
   position: relative
+  margin-bottom: 30px
   &__input
     font-size: 18px
     padding: 8px
@@ -107,6 +74,7 @@ p,h1,h2,h3,h4,h5,h6
     &::focus
     border: none
 .main
+  padding-bottom: 70px
   &-content
     padding: 20px 10px
     background-color: rgba(#ffffff, 0.8)
