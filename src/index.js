@@ -22,18 +22,29 @@ function getData() {
 
 function renderCards(data) {
   const hunters = document.querySelector(".hunters");
+  const platinum = document.querySelector(".all-count_platinum");
+  const diamond = document.querySelector(".all-count_diamond");
+
+
+  platinum.innerHTML = `<img src="./dist/img/title/platinum.png" alt="Платина"> : ${data.values[1][3]}`;
+  diamond.innerHTML = `<img src="./dist/img/title/diamond.png" alt="Алмаз"> : ${data.values[1][4]}`;
+
   const huntersList = [];
+
   data.values.forEach((item, i) => {
     if (i > 1 && i < 211 && item.length !== 0) {
       huntersList.push([item[3], item[4], item[5], item[0], item[1]]);
     }
   });
+
   huntersList.sort(function(a,b){ 
+    return (b[2] - a[2]);
+  }).sort(function(a,b){ 
     return (b[1] - a[1]);
   }).sort(function(a,b){ 
     return (b[0] - a[0]);
   });
-  console.log(huntersList);
+
   const icons = {
     воин: "./dist/img/class/0.png",
     маг: "./dist/img/class/1.png",
@@ -66,7 +77,9 @@ function renderCards(data) {
         <div class="card-item col-2  col-lg-1">${member[2]}</div>
       </div>
     </div>`;
+
       hunters.appendChild(card);
+
   });
 }
 
@@ -79,6 +92,7 @@ function toggleCheckbox() {
 
   const oneItem = document.querySelector("#one-item");
   const twoItem = document.querySelector("#two-item");
+
   onePlatinum.checked = false;
   twoPlatinum.checked = false;
   oneDiamond.checked = false;
@@ -95,6 +109,7 @@ function toggleCheckbox() {
       onePlatinum.nextElementSibling.classList.remove("checked");
     }
   });
+
   twoPlatinum.addEventListener("change", () => {
     if (twoPlatinum.checked === true) {
       onePlatinum.checked = false;
@@ -114,6 +129,7 @@ function toggleCheckbox() {
       oneDiamond.nextElementSibling.classList.remove("checked");
     }
   });
+
   twoDiamond.addEventListener("change", () => {
     if (twoDiamond.checked === true) {
       oneDiamond.checked = false;
@@ -133,6 +149,7 @@ function toggleCheckbox() {
       oneItem.nextElementSibling.classList.remove("checked");
     }
   });
+
   twoItem.addEventListener("change", () => {
     if (twoItem.checked === true) {
       oneItem.checked = false;
@@ -149,7 +166,9 @@ function renderCatalog() {
     catalogList = document.querySelector(".catalog-list"),
     catalogBtn = document.querySelector(".catalog-button"),
     catalogWrapper = document.querySelector(".catalog");
+
   const category = new Set();
+
   const icons = {
     Воин: "./dist/img/class/0.png",
     Маг: "./dist/img/class/1.png",
@@ -240,7 +259,7 @@ function filter() {
       elem.parentNode.style.display = "none";
     } else if (oneItem.checked && Number(cardItem) !== 1) {
       elem.parentNode.style.display = "none";
-    } else if (twoItem.checked && Number(cardItem) < 2) {
+    } else if (twoItem.checked && Number(cardItem) !== 2) {
       elem.parentNode.style.display = "none";
     } else if (activeLi) {
       if (elem.dataset.class !== activeLi.textContent) {
@@ -251,8 +270,7 @@ function filter() {
 }
 
 function actionPage() {
-  const cards = document.querySelectorAll(".hunters .card"),
-    form = document.querySelector(".form"),
+  const form = document.querySelector(".form"),
     search = document.querySelector(".form__input");
 
   const onePlatinum = document.querySelector("#one-platinum");
@@ -263,6 +281,53 @@ function actionPage() {
 
   const oneItem = document.querySelector("#one-item");
   const twoItem = document.querySelector("#two-item");
+
+  const openPlatinum = document.querySelector("#platinum");
+  const openPlatinumAfter = document.querySelector("#platinum-after");
+  const platinumLabel = document.querySelector("#platinum-label");
+
+  const openDiamond = document.querySelector("#diamond");
+  const openDiamondAfter = document.querySelector("#diamond-after");
+  const diamondLabel = document.querySelector("#diamond-label");
+
+  const openItem = document.querySelector("#item");
+  const openItemAfter = document.querySelector("#item-after");
+  const itemLabel = document.querySelector("#item-label");
+
+
+
+  openPlatinum.addEventListener("click", () =>{
+    if(!platinumLabel.classList.contains("filter-check_container_active")){
+      animateCSS(platinumLabel, "fadeInDown");
+      platinumLabel.classList.add("filter-check_container_active");
+      openPlatinumAfter.classList.add("filter-check_title_after_active");
+    } else{
+      platinumLabel.classList.remove("filter-check_container_active");
+      openPlatinumAfter.classList.remove("filter-check_title_after_active");
+    }
+  });
+
+  openDiamond.addEventListener("click", () =>{
+    if(!diamondLabel.classList.contains("filter-check_container_active")){
+      animateCSS(diamondLabel, "fadeInDown");
+      diamondLabel.classList.add("filter-check_container_active");
+      openDiamondAfter.classList.add("filter-check_title_after_active");
+    } else{
+      diamondLabel.classList.remove("filter-check_container_active");
+      openDiamondAfter.classList.remove("filter-check_title_after_active");
+    }
+  });
+
+  openItem.addEventListener("click", () =>{
+    if(!itemLabel.classList.contains("filter-check_container_active")){
+      animateCSS(itemLabel, "fadeInDown");
+      itemLabel.classList.add("filter-check_container_active");
+      openItemAfter.classList.add("filter-check_title_after_active");
+    } else{
+      itemLabel.classList.remove("filter-check_container_active");
+      openItemAfter.classList.remove("filter-check_title_after_active");
+    }
+  });
 
   onePlatinum.addEventListener("change", filter);
   twoPlatinum.addEventListener("change", filter);
@@ -276,6 +341,20 @@ function actionPage() {
     filter();
     search.value = "";
   });
+}
+
+function animateCSS(element, animationName, callback) {
+  const node = element;
+  node.classList.add("animated", animationName);
+
+  function handleAnimationEnd() {
+    node.classList.remove("animated", animationName);
+    node.removeEventListener("animationend", handleAnimationEnd);
+
+    if (typeof callback === "function") callback();
+  }
+
+  node.addEventListener("animationend", handleAnimationEnd);
 }
 
 getData().then(data => {

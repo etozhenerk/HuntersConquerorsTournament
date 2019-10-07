@@ -17,7 +17,7 @@ p,h1,h2,h3,h4,h5,h6
   color: #CC5333
 .header
   padding-top: 20px
-  padding-bottom: 50px
+  padding-bottom: 20px
   &-content
     padding: 20px 10px
     background-color: rgba(#ffffff, 0.8)
@@ -85,6 +85,8 @@ p,h1,h2,h3,h4,h5,h6
     padding: 10px 0
   &-title
     font-size: 18px
+  &-class
+    text-align: center
   &-platinum,&-diamond,&-item
     text-align: center
 .title
@@ -94,22 +96,66 @@ p,h1,h2,h3,h4,h5,h6
     font-weight: 700
     font-size: 18px
   &-class
+    text-align: center
     font-weight: 700
     font-size: 18px
   &-title
     font-size: 18px
+.all-count
+  display: flex
+  flex-direction: column
+  margin-bottom: 10px
+  &_title
+    text-align: center
+    font-weight: 700
+    font-size: 18px
+    margin-bottom: 20px
+  &_content
+    display: flex
+    justify-content: center
+    align-items: center
+  &_platinum
+    margin-right: 50px
 .filter
   display: flex
   flex-direction: column
+  padding-top: 8px
   &-title
     font-weight: 700
-    font-size: 24px
+    font-size: 18px
     margin-bottom: 20px
   &-check
     display: flex
     flex-direction: column
     margin-bottom: 20px
-    padding-left: 60px
+    padding-left: 20px
+    &_container
+      display: none
+      &_active
+        display: block
+    &_title
+      position: relative
+      background-color: #ffffff
+      border: 1px solid #000000
+      border-radius: 5px
+      padding: 10px 5px
+      cursor: pointer
+      z-index: 100
+      &_after
+        position: absolute
+        top: 40%
+        right: 10px
+        transform: translateY(-30%) rotate(135deg)
+        transition: all 0.5s
+        z-index: 120
+        content: ""
+        width: 15px
+        height: 15px
+        border-bottom: 2px solid #000
+        border-right: 2px solid #000
+        &_active
+          transform: translateY(-50%) rotate(45deg) 
+  
     &_label 
       display: block
       min-height: 16px
@@ -117,9 +163,24 @@ p,h1,h2,h3,h4,h5,h6
       padding-left: 25px
       color: #000000
       font-size: 16px
+      font-weight: 700
       cursor: pointer
       user-select: none
+      padding-top: 10px
+      padding-bottom: 5px
       margin-bottom: 10px
+      &::after
+        position: absolute
+        bottom: 0
+        left: 20px
+        transition:  all 0.3s
+        content: ""
+        height: 2px
+        width: 0
+        background: #000
+      &:hover
+        &::after
+          width: 65%
       &-text
         display: inline-block
         vertical-align: top
@@ -132,23 +193,16 @@ p,h1,h2,h3,h4,h5,h6
       position: absolute
       cursor: pointer
     &_checkmark
-      width: 20px
-      height: 20px
-      position: absolute
-      top: 0
-      left: 0
-      box-sizing: border-box
-      background: #fff
-      border: 2px solid #000000
       &.checked::after
-        display: block
+        transform: scale(1)
       &:after
-        display: none
+        transform: scale(0)
+        transition: all 0.2s
         width: 20px
         height: 20px
         position: absolute
-        top: -4px
-        left: 2px
+        top: 10px
+        left: 0
         content: ""
         background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 15 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.3 15L15 1.2 13.7 0 5.1 12.3 1.1 8 0 9.4 5.3 15z' fill='%23005bff'/%3E%3C/svg%3E")
 
@@ -161,23 +215,11 @@ p,h1,h2,h3,h4,h5,h6
 
 @media   ( max-width: 768px )
   .filter
-    flex-direction: row
-    flex-wrap: wrap
-    justify-content: space-between
+
     &-title
       width: 100%
       text-align: center
 @media ( max-width: 576px )
-  .hidden
-    &-mobile
-      display: none
-  .catalog
-    &-button
-      button
-        padding: 20px 20px
-      &_burger
-        left: 50%
-        transform: translateX(-50%)
   .card
     &-title
       font-size: 14px
