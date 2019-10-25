@@ -271,7 +271,8 @@ function filter() {
 
 function actionPage() {
   const form = document.querySelector(".form"),
-    search = document.querySelector(".form__input");
+    search = document.querySelector(".form__input"),
+    filterBlock = document.querySelector(".filter");
 
   const onePlatinum = document.querySelector("#one-platinum");
   const twoPlatinum = document.querySelector("#two-platinum");
@@ -282,47 +283,12 @@ function actionPage() {
   const oneItem = document.querySelector("#one-item");
   const twoItem = document.querySelector("#two-item");
 
-  const openPlatinum = document.querySelector("#platinum");
-  const openPlatinumAfter = document.querySelector("#platinum-after");
-  const platinumLabel = document.querySelector("#platinum-label");
 
-  const openDiamond = document.querySelector("#diamond");
-  const openDiamondAfter = document.querySelector("#diamond-after");
-  const diamondLabel = document.querySelector("#diamond-label");
-
-  const openItem = document.querySelector("#item");
-  const openItemAfter = document.querySelector("#item-after");
-  const itemLabel = document.querySelector("#item-label");
-
-
-
-  openPlatinum.addEventListener("click", () =>{
-    if(!platinumLabel.classList.contains("filter-check_container_active")){
-      platinumLabel.classList.add("filter-check_container_active");
-      openPlatinumAfter.classList.add("filter-check_title_after_active");
-    } else{
-      platinumLabel.classList.remove("filter-check_container_active");
-      openPlatinumAfter.classList.remove("filter-check_title_after_active");
-    }
-  });
-
-  openDiamond.addEventListener("click", () =>{
-    if(!diamondLabel.classList.contains("filter-check_container_active")){
-      diamondLabel.classList.add("filter-check_container_active");
-      openDiamondAfter.classList.add("filter-check_title_after_active");
-    } else{
-      diamondLabel.classList.remove("filter-check_container_active");
-      openDiamondAfter.classList.remove("filter-check_title_after_active");
-    }
-  });
-
-  openItem.addEventListener("click", () =>{
-    if(!itemLabel.classList.contains("filter-check_container_active")){
-      itemLabel.classList.add("filter-check_container_active");
-      openItemAfter.classList.add("filter-check_title_after_active");
-    } else{
-      itemLabel.classList.remove("filter-check_container_active");
-      openItemAfter.classList.remove("filter-check_title_after_active");
+  filterBlock.addEventListener("click", e =>{
+    if(e.target.className === "filter-check_title"){
+      console.log(e.target);
+      e.target.firstElementChild.classList.toggle("filter-check_title_after_active");
+      e.target.nextElementSibling.classList.toggle("filter-check_container_active");
     }
   });
 
