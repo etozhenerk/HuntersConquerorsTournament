@@ -286,7 +286,6 @@ function actionPage() {
 
   filterBlock.addEventListener("click", e =>{
     if(e.target.className === "filter-check_title"){
-      console.log(e.target);
       e.target.firstElementChild.classList.toggle("filter-check_title_after_active");
       e.target.nextElementSibling.classList.toggle("filter-check_container_active");
     }
@@ -319,13 +318,6 @@ function animateCSS(element, animationName, callback) {
 
   node.addEventListener("animationend", handleAnimationEnd);
 }
-
-// getData().then(data => {
-//   renderCards(data);
-//   toggleCheckbox();
-//   renderCatalog();
-//   actionPage();
-// });
 
 (async function () { 
   const db = await getData();
