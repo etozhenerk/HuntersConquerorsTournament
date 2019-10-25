@@ -298,7 +298,6 @@ function actionPage() {
 
   openPlatinum.addEventListener("click", () =>{
     if(!platinumLabel.classList.contains("filter-check_container_active")){
-      animateCSS(platinumLabel, "fadeInDown");
       platinumLabel.classList.add("filter-check_container_active");
       openPlatinumAfter.classList.add("filter-check_title_after_active");
     } else{
@@ -309,7 +308,6 @@ function actionPage() {
 
   openDiamond.addEventListener("click", () =>{
     if(!diamondLabel.classList.contains("filter-check_container_active")){
-      animateCSS(diamondLabel, "fadeInDown");
       diamondLabel.classList.add("filter-check_container_active");
       openDiamondAfter.classList.add("filter-check_title_after_active");
     } else{
@@ -320,7 +318,6 @@ function actionPage() {
 
   openItem.addEventListener("click", () =>{
     if(!itemLabel.classList.contains("filter-check_container_active")){
-      animateCSS(itemLabel, "fadeInDown");
       itemLabel.classList.add("filter-check_container_active");
       openItemAfter.classList.add("filter-check_title_after_active");
     } else{
@@ -357,9 +354,17 @@ function animateCSS(element, animationName, callback) {
   node.addEventListener("animationend", handleAnimationEnd);
 }
 
-getData().then(data => {
-  renderCards(data);
+// getData().then(data => {
+//   renderCards(data);
+//   toggleCheckbox();
+//   renderCatalog();
+//   actionPage();
+// });
+
+(async function () { 
+  const db = await getData();
+  renderCards(db);
   toggleCheckbox();
   renderCatalog();
   actionPage();
-});
+}());
