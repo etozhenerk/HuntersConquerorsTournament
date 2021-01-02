@@ -1,7 +1,7 @@
 function getData() {
   const hunters = document.querySelector(".hunters");
   return fetch(
-    "https://sheets.googleapis.com/v4/spreadsheets/1QrnkLy5pG3UUfRLRTx3ELjeFxZiKUn1odc9fVjSRNcU/values/B:G?key=AIzaSyBcgKLrhDrhOC6Y0sZcDNuJ0ut_Sx_EkR8"
+    "https://sheets.googleapis.com/v4/spreadsheets/1ZkvejTBxfHLykF-HKpwp0Q4x2SZTpTZz5VHV5nMeG4U/values/B:G?key=AIzaSyBcgKLrhDrhOC6Y0sZcDNuJ0ut_Sx_EkR8"
   )
     .then(response => {
       if (response.ok) {
